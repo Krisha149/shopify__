@@ -1,6 +1,8 @@
 # shopify
  shopify project using HTML, CSS, JAVASCRIPT
 
+ project link: file:///C:/Users/HP/OneDrive/Desktop/shopify__/index.html
+
   Live Demo-
   
   https://github.com/user-attachments/assets/c160ff72-61cf-4814-8f89-fe49e547f8c4
