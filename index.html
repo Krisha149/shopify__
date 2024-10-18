@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Shopify App</title>
+    </head>
+    <body>
+        <nav>
+            <div class="logo"
+                style="margin-top: 10px; font-size:larger"><b>Shopify</b></div>
+            <div class="nav-links">
+                <a href="index.html" id="home-link">Home</a>
+                <a href="about.html" id="about-link">About</a>
+                <a href="contact.html" id="contact-link">Contact</a>
+                <button id="cart-button" style="font-size: 15px;">Cart(<span
+                        id="cart-count">0</span>)</button>
+                <span id="user-name"></span>
+            </div>
+        </nav>
+
+        <div id="discount-coupon" style="display: none;"></div>
+
+        <div id="home-page" class="page">
+            <center><h1>Home Page</h1></center>
+            <div class="gallery" id="gallery">
+                <!-- Product images will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Sign In Popup -->
+        <div id="signin-popup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h1>Sign In</h1>
+                <form id="signin-form">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Sign In</button>
+                    <p>Don't have an account? <span id="show-signup"
+                            style="color: rgb(118, 156, 169); cursor:pointer">Sign
+                            Up</span></p>
+                </form>
+                <span class="close" onclick="closePopup()">×</span>
+            </div>
+        </div>
+
+        <!-- Sign Up Popup -->
+        <div id="signup-popup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h1>Sign Up</h1>
+                <form id="signup-form">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                    <p>Already have an account? <span id="show-signin"
+                            style="color: rgb(118, 156, 169); cursor:pointer">Sign
+                            In</span></p>
+                </form>
+                <span class="close" onclick="closePopup()">×</span>
+            </div>
+        </div>
+
+        <div id="cart-page" class="page" style="display: none;">
+            <center><h1>Cart Page</h1></center>
+
+            <div class="container">
+                <div class="form-details">
+                    <h2>
+                        Shipping Address
+                    </h2>
+                    <form id="checkout-form">
+                        <label for="firstname">First Name</label>
+                        <br>
+                        <input type="text" id="firstname" required>
+                        <label for="lastname">Last Name</label>
+                        <br>
+                        <input type="text" id="lastname" required>
+                        <br>
+                        <label for="phoneno">Phone Number</label>
+                        <br>
+                        <input type="tel" id="phoneno" required>
+                        <br>
+                        <label for="streetadd">Street Address</label>
+                        <br>
+                        <textarea id="streetadd" required></textarea>
+                        <br>
+                        <label for="country">Country</label>
+                        <br>
+                        <input type="text" id="country" required>
+                        <label for="state">State/Province</label>
+                        <br>
+                        <input type="text" id="state" required>
+                        <label for="city">City</label>
+                        <br>
+                        <input type="text" id="city" required>
+                        <br>
+                        <span><input type="checkbox" required> Do you have
+                            GST?</span>
+                        <br><br>
+                        <span><input type="checkbox" style="color: lightblue;"
+                                required>My billing and shipping address are the
+                            same</span>
+
+                    </form>
+                </div>
+                <div class="order-summary">
+
+                    <div id="cart-items"></div>
+                    <h3>
+                        Add Gift vouchers/Loyalty Points to Dell e-pay
+                    </h3>
+                    <button type="button"
+                        style="color:rgb(225, 203, 203);background-color:rgb(66, 126, 146)">Add
+                        Balance</button>
+                    <br><br>
+                    <p style="color: gray;">(shipping free)</p>
+
+                    <div class="summary">
+                        <p>Cart SubTotal &nbsp;&nbsp;&nbsp; <span
+                                id="order-total"
+                                style="font-weight:bolder">0</span></p>
+                        <p>Gift Wrap &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                            <span id="gift-wrap"
+                                style="font-weight:bolder">0</span></p>
+                        <p>Shipping &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; ₹<span id="shipping"
+                                style="font-weight:bolder">0</span></p>
+                        <p>E-Pay Used &nbsp;&nbsp;&nbsp; &nbsp; <span
+                                id="epay-amount"
+                                style="font-weight:bolder">0</span></p>
+                        <p>Order Total &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <span
+                                id="subtotal"
+                                style="font-weight:bolder">0</span></p>
+
+                        <button id="clear-cart">Clear Cart</button>
+                    </div>
+
+                    <span><input type="checkbox" required>I would like Dell to
+                        contact me by email and phone for updates on
+                        products,services,solutions,exclusive offers and special
+                        events.</span>
+
+                    <span><input type="checkbox" required>I AGREE to <span
+                            style="color: rgb(108, 161, 194);">Terms of
+                            Use</span> and <span
+                            style="color: rgb(108, 161, 194);"> Privacy
+                            Statements </span></span>
+
+                    <p><span style="color: black;">Assisted
+                            Purchase(optional)-</span>please enter the name of
+                        the Dell sales representative who has assisted you in
+                        this purchase</p>
+                    <textarea></textarea>
+                    <br><br>
+                    <button type="button" style="color:white;" class="paynow"
+                        id="pay-now-button">Pay Now</button>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
